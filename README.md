@@ -48,6 +48,12 @@ custom: a decimal comma makes `printf`, `sort -n`, CSV import/export and
 `strtod()` disagree with other tools, and a space (never `,` or `.`) is the
 only unambiguous thousands separator.
 
+## Tests
+
+`tests/docker.sh` installs, checks and removes the locale in a container for
+each supported distribution (needs Docker); pass image names to test only
+those, e.g. `tests/docker.sh fedora:latest`. CI runs the same on every push.
+
 ## License
 
 [GPL-3.0-or-later](LICENSE)

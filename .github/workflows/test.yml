@@ -1,0 +1,35 @@
+name: test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly, to catch breakage from new glibc in rolling images
+    - cron: "0 6 * * 1"
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: shellcheck install-en_PL.sh tests/*.sh
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - debian:stable-slim
+          - debian:oldstable-slim
+          - ubuntu:24.04
+          - ubuntu:22.04
+          - archlinux:latest
+          - fedora:latest
+          - almalinux:9
+          - almalinux:10
+    name: test (${{ matrix.image }})
+    steps:
+      - uses: actions/checkout@v5
+      - run: tests/docker.sh "${{ matrix.image }}"
