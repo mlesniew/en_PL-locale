@@ -1,5 +1,8 @@
 # en_PL
 
+[![tests](https://img.shields.io/github/actions/workflow/status/mlesniew/en_PL-locale/test.yml?branch=main&label=tests)](https://github.com/mlesniew/en_PL-locale/actions/workflows/test.yml)
+[![license](https://img.shields.io/github/license/mlesniew/en_PL-locale)](LICENSE)
+
 An English locale with international formats — ISO 8601 dates, SI number
 formatting, 24-hour clock, Monday-first weeks, A4 and metric units — plus the
 Polish złoty and Polish alphabetical order. It is the Polish counterpart of
